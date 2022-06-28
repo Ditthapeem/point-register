@@ -5,9 +5,20 @@
         <h1>Point Registration</h1>
     </head>
     <body>
-        <center><button class="button">รายการเบเกอรี่ และขนมการบินไทย – Bakery by Thai Catering</button> <br>
-        <button class="button">เมนูชุดของว่าง ขนมกล่องการบินไทย – Snack Box Set</button> <br>
-        <button class="button">สมัครสมาชิก - Registration new member</button></center>
+        <center>
+            <a href="{% url 'point_register:bakery' %}" class="button">
+                <br>
+                รายการเบเกอรี่ และขนมการบินไทย <br> Bakery by Thai Catering
+            </a><br>
+            <a class="button">
+                <br>
+                เมนูชุดของว่าง ขนมกล่องการบินไทย <br> Snack Box Set
+            </a> <br>
+            <a class="button">
+                <br>
+                สมัครสมาชิก <br> Registration new member
+            </a>
+        </center>
     </body>
     
 </html>
