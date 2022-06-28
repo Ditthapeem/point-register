@@ -1,0 +1,47 @@
+.point_block {
+    margin-left:30%;
+    padding:0px 16px;
+    overflow: auto;
+}
+
+.point_added {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 30%;
+    background-color: #f1f1f1;
+    position: fixed;
+    height: 100%;
+    overflow: auto;
+}
+
+.type_frame {
+    background-color: rgb(215, 182, 246);
+    text-align: center;
+    display: inline-block;
+    border-style: solid;
+    width: 95%;
+    height: 50px;
+    font-size: large;
+    margin-left: 2%;
+}
+
+.button {
+    margin-top:125%;
+    background-color: #5a01a7; 
+    height: 5%;
+    display: block;
+    color: white;
+    text-decoration: none;
+    font-size: large;
+    cursor: pointer;
+    padding: 10px;
+
+}
+
+.button:hover {
+    outline-color: transparent;
+    outline-style:solid;
+    box-shadow: 0 0 0 4px #5a01a7;
+    background-color: rgb(216, 174, 255);
+}
