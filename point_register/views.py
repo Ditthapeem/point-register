@@ -7,6 +7,4 @@ from .models import Bakery
 
 
 def index(request):
-    bakery_list = Bakery.objects.all()
-    context = {'bakery_list': bakery_list}
-    return render(request, 'point_register/index.html', context)
+    return render(request, 'point_register/index.html')

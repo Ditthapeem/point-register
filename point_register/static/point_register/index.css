@@ -1,8 +1,15 @@
-body {
-    background-color: blueviolet;
+
+button {
+    margin: 10px;
+    width: 90%;
+    height: 25%;
+    outline-style:solid;
+    font-size: large;
 }
 
-td {
-    text-align: center;
-    background-color: DarkSlateBlue;
+.button:hover {
+    outline-color: transparent;
+    outline-style:solid;
+    box-shadow: 0 0 0 4px #5a01a7;
+    background-color: rgb(216, 174, 255);
 }
