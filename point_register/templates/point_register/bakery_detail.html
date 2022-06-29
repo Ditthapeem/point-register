@@ -11,9 +11,29 @@
         </div>
         <div class="point_block">
             <p class="type_frame">ขนมการบินไทย เบเกอรี่ A – Bakery A</p>
+            {% for l in list %}
+                {% if l.type_text == 'A' %}
+                    <button class="box">{{ l.name }}</button> 
+                {% endif %}    
+            {% endfor %}        
             <p class="type_frame">ขนมการบินไทย เบเกอรี่ B – Bakery B</p>
+            {% for l in list %}
+                {% if l.type_text == 'B' %}
+                    <button class="box">{{ l.name }}</button>
+                {% endif %}
+            {% endfor %} 
             <p class="type_frame">ขนมการบินไทย เบเกอรี่ C – Bakery C</p>
+            {% for l in list %}
+                {% if l.type_text == 'C' %}
+                    <button class="box">{{ l.name }}</button> 
+                {% endif %}
+            {% endfor %}   
             <p class="type_frame">ขนมการบินไทย เบเกอรี่ D – Bakery D</p>
+            {% for l in list %}
+                {% if l.type_text == 'D' %}
+                    <button class="box">{{ l.name }}</button>
+                {% endif %}
+            {% endfor %}
         </div>
     </body>  
 </html>

@@ -45,3 +45,11 @@
     box-shadow: 0 0 0 4px #5a01a7;
     background-color: rgb(216, 174, 255);
 }
+
+.box {
+    background-color: aliceblue;
+    margin: auto;
+    cursor: pointer;
+    height: 5%;
+    margin-left: 2%;
+}
