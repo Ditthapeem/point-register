@@ -2,7 +2,8 @@
 <link rel="stylesheet" type="text/css" href="{% static 'point_register/bakery_detail.css' %}">
 <html>
     <head>
-        <h1>Point Registration</h1>
+        
+        <h1>Point Registration <a href="{% url 'point_register:index' %}" class="menu">Menu</a> </h1>
         <h2>รายการเบเกอรี่ และขนมการบินไทย – Bakery by Thai Catering</h2>
     </head>
     <body>
@@ -38,7 +39,7 @@
                     <button class="box">{{ l.name }}</button>
                 {% endif %}
             {% endfor %}
-            
+
         </div>
     </body>  
 </html>
