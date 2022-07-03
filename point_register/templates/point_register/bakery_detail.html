@@ -8,38 +8,58 @@
     </head>
     <body>
         <div class="point_added">
-            <center><button class="button">Add Point</button></center>
+            <label class="label">Mobile Number: </label>
+            <input type="text" class="number"><button class="button">Add Point</button>
+            <li id="list"></li>
+            <button class="remove_box" onclick="deleteBakery()">Remove All List</button> 
         </div>
         <div class="point_block">
 
             <p class="type_frame">ขนมการบินไทย เบเกอรี่ A – Bakery A</p>
             {% for l in list %}
                 {% if l.type_text == 'A' %}
-                    <button class="box">{{ l.name }}</button> 
+                    <button class="box" onclick="addBakery('{{l.name}}')">{{ l.name }}</button> 
                 {% endif %}    
             {% endfor %} 
 
             <p class="type_frame">ขนมการบินไทย เบเกอรี่ B – Bakery B</p>
             {% for l in list %}
                 {% if l.type_text == 'B' %}
-                    <button class="box">{{ l.name }}</button>
+                    <button class="box" onclick="addBakery('{{l.name}}')">{{ l.name }}</button>
                 {% endif %}
             {% endfor %} 
 
             <p class="type_frame">ขนมการบินไทย เบเกอรี่ C – Bakery C</p>
             {% for l in list %}
                 {% if l.type_text == 'C' %}
-                    <button class="box">{{ l.name }}</button> 
+                    <button class="box" onclick="addBakery('{{l.name}}')">{{ l.name }}</button> 
                 {% endif %}
             {% endfor %}   
 
             <p class="type_frame">ขนมการบินไทย เบเกอรี่ D – Bakery D</p>
             {% for l in list %}
                 {% if l.type_text == 'D' %}
-                    <button class="box">{{ l.name }}</button>
+                    <button class="box" onclick="addBakery('{{l.name}}')">{{ l.name }}</button>
                 {% endif %}
             {% endfor %}
 
         </div>
     </body>  
+
+    <script>
+        let bakeryList = [];
+        function addBakery(x) {
+            console.log(x);
+            bakeryList.push(x);
+            console.log(bakeryList);
+
+            document.getElementById("list").innerHTML = bakeryList;
+        }
+
+        function deleteBakery() {
+            bakeryList = [];
+            document.getElementById("list").innerHTML = bakeryList;
+        }
+
+    </script>
 </html>

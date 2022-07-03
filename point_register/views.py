@@ -12,7 +12,6 @@ def index(request):
 def bakery_detail(request):
     type_list = Type.objects.all()
     context = { 'list': type_list}
-    print(context)
     return render(request, 'point_register/bakery_detail.html', context)
 
 def setbox_deatail(request):
