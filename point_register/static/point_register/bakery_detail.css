@@ -50,7 +50,7 @@
     margin: auto;
     cursor: pointer;
     height: 10%;
-    margin-left: 2%;
+    width: 100%;
 }
 
 .box:hover {
@@ -96,4 +96,11 @@
     cursor: pointer;
     height: 5%;
     margin-left: 72%;
+}
+
+.mutiple-button {
+    display: inline-block;
+    margin: 10px;
+    margin-left: 2%;
+    
 }
