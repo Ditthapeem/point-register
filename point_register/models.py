@@ -1,4 +1,6 @@
+from unicodedata import name
 from django.db import models
+from django.contrib.auth.models import User
 
 
 class Bakery(models.Model):
@@ -20,3 +22,10 @@ class Type(models.Model):
 
     def __str__(self) -> str:
         return str(f'{self.name}: Bakery {self.type_text}')
+
+class UserPoint(models.Model):
+    name = models.OneToOneField(User, on_delete=models.CASCADE)
+    point = models.IntegerField(default=0)
+
+    def __str__(self) -> str:
+        return str(f'{self.name}: {self.point} points')

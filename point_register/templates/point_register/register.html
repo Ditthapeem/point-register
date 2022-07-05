@@ -1,0 +1,88 @@
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'point_register/register.css' %}">
+<html>
+    <head>
+        <h1>New Member Registration <a href="{% url 'point_register:index' %}" class="menu">Menu</a></h1>
+    </head>
+    <body>
+        <form method="POST">
+            {% csrf_token %}
+            <fieldset>
+                <table>
+                    <tr>
+                        <td >
+                            <label class="number">
+                                <b>Mobile Number</b>
+                            </label><br>
+                            <div class="field">
+                                {{ form.username}}
+                            </div>
+                        </td>
+                    </tr>
+
+
+                    <tr>
+                        <td>
+                            <label class="number">
+                                <b>{{ form.first_name.label }}</b>
+                            </label>
+                            <div class="field">
+                                {{ form.first_name}}
+                            </div>
+                        </td>
+                    </tr>
+            
+                    <tr>
+                        <td>
+                            <label class="number">
+                                <b>{{ form.last_name.label }}</b>
+                            </label>
+                            <div class="field">
+                                {{ form.last_name}}
+                            </div>
+                        </td>
+                    </tr>
+            
+                    <tr>
+                        <td>
+                            <label class="number">
+                                <b>{{ form.email.label }}</b>
+                            </label>
+                            <div class="field">
+                                {{ form.email}}
+                            </div>     
+                        </td>      
+                    </tr>
+            
+                    <tr>
+                        <td>
+                            <label class="number">
+                                <b>{{ form.password1.label }}</b>
+                            </label>
+                            <div class="field">
+                                {{ form.password1}}
+                            </div>
+                        </td>
+                    </tr>
+            
+                    <tr>
+                        <td>
+                            <label class="number">
+                                <b>{{ form.password2.label }}</b>
+                            </label>
+                            <div class="field">
+                                {{ form.password2}}
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+                <br>
+        
+        
+                <button class="button" type="submit">Register New Member</button>
+            </fieldset>
+        
+        </form>
+    </body>
+
+</html>

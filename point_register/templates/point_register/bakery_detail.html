@@ -10,7 +10,7 @@
         <div class="point_added">
             <label class="label">Mobile Number: </label>
             <input type="text" class="number"><button class="button">Add Point</button>
-            <li id="list"></li>
+            <li id="list"></li><br>
             <button class="remove_box" onclick="deleteBakery()">Remove All List</button> 
         </div>
         <div class="point_block">
@@ -19,9 +19,9 @@
             {% for l in list %}
                 {% if l.type_text == 'A' %}
                     <div class="mutiple-button">
-                        <input type="number" id="{{l.name}}" value="0">
-                        <button onclick="plus('{{l.name}}')">+</button>
-                        <button onclick="minus('{{l.name}}')">-</button> <br>
+                        <input type="number" id="{{l.name}}" value="1">
+                        <button class="plus" onclick="plus('{{l.name}}')">+</button>
+                        <button class="minus" onclick="minus('{{l.name}}')">-</button> <br>
                         <button class="box" onclick="addBakery('{{l.name}}')">{{ l.name }}</button>
                     </div>
                 {% endif %}    
@@ -31,9 +31,9 @@
             {% for l in list %}
                 {% if l.type_text == 'B' %}
                     <div class="mutiple-button">
-                        <input type="number" id="{{l.name}}" value="0">
-                        <button onclick="plus('{{l.name}}')">+</button>
-                        <button onclick="minus('{{l.name}}')">-</button> <br>
+                        <input type="number" id="{{l.name}}" value="1">
+                        <button class="plus" onclick="plus('{{l.name}}')">+</button>
+                        <button class="minus"onclick="minus('{{l.name}}')">-</button> <br>
                         <button class="box" onclick="addBakery('{{l.name}}')">{{ l.name }}</button>
                     </div>
                 {% endif %}
@@ -43,9 +43,9 @@
             {% for l in list %}
                 {% if l.type_text == 'C' %}
                     <div class="mutiple-button">
-                        <input type="number" id="{{l.name}}" value="0">
-                        <button onclick="plus('{{l.name}}')">+</button>
-                        <button onclick="minus('{{l.name}}')">-</button> <br>
+                        <input type="number" id="{{l.name}}" value="1">
+                        <button class="plus" onclick="plus('{{l.name}}')">+</button>
+                        <button class="minus" onclick="minus('{{l.name}}')">-</button> <br>
                         <button class="box" onclick="addBakery('{{l.name}}')">{{ l.name }}</button>
                     </div>
                 {% endif %}
@@ -55,9 +55,9 @@
             {% for l in list %}
                 {% if l.type_text == 'D' %}
                     <div class="mutiple-button">
-                        <input type="number" id="{{l.name}}" value="0">
-                        <button onclick="plus('{{l.name}}')">+</button>
-                        <button onclick="minus('{{l.name}}')">-</button> <br>
+                        <input type="number" id="{{l.name}}" value="1">
+                        <button class="plus" onclick="plus('{{l.name}}')">+</button>
+                        <button class="minus" onclick="minus('{{l.name}}')">-</button> <br>
                         <button class="box" onclick="addBakery('{{l.name}}')">{{ l.name }}</button>
                     </div>
                 {% endif %}
@@ -92,7 +92,7 @@
             printList = ""
             for([key, val] of Object.entries(bakeryList)) {
                 if (val != 0) {
-                  printList += "<li>" + key + " x " + val + "</li>" ;  
+                  printList += "<li class='display_text'>" + " - " + key + " x " + val + "</li>" ;  
                 }
                 
             }
@@ -108,7 +108,7 @@
 
         function deleteBakery() {
             for([key, val] of Object.entries(bakeryList)) {
-                document.getElementById(key).value = 0;
+                document.getElementById(key).value = 1;
             }
             printList = "";
             bakeryList = {};
