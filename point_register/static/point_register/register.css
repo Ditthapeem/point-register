@@ -1,0 +1,65 @@
+
+.label {
+    font-size: large;
+}
+
+table {
+   width: 100%;
+   height: 100%;
+}
+
+.number {
+    display: inline-block;
+    margin: 10px;
+    font-size: large;
+}
+
+.field {
+    margin-left: 2%;
+    height: 30%;
+}
+
+input {
+    width: 50%;
+    height: 100%;
+}
+
+.menu {
+    background-color: aliceblue;
+    text-align: center;
+    border: solid black;
+    text-decoration: none;
+    display: inline-block;
+    margin: auto;
+    cursor: pointer;
+    height: 5%;
+    width: 10%;
+    margin-left: 65%;
+}
+
+.menu:hover {
+    outline-color: transparent;
+    outline-style:solid;
+    box-shadow: 0 0 0 4px #5a01a7;
+    background-color: rgb(216, 174, 255);
+}
+
+.button {
+    background-color: #5a01a7; 
+    height: 5%;
+    display: inline-block;
+    color: white;
+    text-decoration: none;
+    font-size: large;
+    cursor: pointer;
+    padding: 10px;
+    margin: 10px;
+
+}
+
+.button:hover {
+    outline-color: transparent;
+    outline-style:solid;
+    box-shadow: 0 0 0 4px #5a01a7;
+    background-color: rgb(216, 174, 255);
+}

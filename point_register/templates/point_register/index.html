@@ -1,0 +1,24 @@
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'point_register/index.css' %}">
+<html>
+    <head>
+        <h1>Point Registration</h1>
+    </head>
+    <body>
+        <center>
+            <a href="{% url 'point_register:bakery' %}" class="button">
+                <br>
+                รายการเบเกอรี่ และขนมการบินไทย <br> Bakery by Thai Catering
+            </a><br>
+            <a class="button">
+                <br>
+                เมนูชุดของว่าง ขนมกล่องการบินไทย <br> Snack Box Set
+            </a> <br>
+            <a href="{% url 'point_register:register' %}" class="button">
+                <br>
+                สมัครสมาชิกสะสมแต้ม <br> Registration new member
+            </a>
+        </center>
+    </body>
+    
+</html>

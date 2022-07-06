@@ -1,0 +1,23 @@
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'point_register/result.css' %}">
+<html>
+    <head>
+        <h1>Point Registration 
+        </h1>
+    </head>
+    <body>
+        <center><fieldset>
+            <center><label>Mobile Number</label></center>
+            <center>{{ user_and_point.name }}</center>
+        </fieldset></center>
+        <center><fieldset>
+            <center><label>Point</label></center>
+            <center>{{ user_and_point.point }}</center>
+        </fieldset></center>
+        <h1>
+            <center><a href="{% url 'point_register:index' %}" class="menu">Menu</a>
+            <a href="{% url 'point_register:bakery' %}" class="menu">Bakery</a></center>
+        </h1>
+
+    </body>
+</html>
