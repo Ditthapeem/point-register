@@ -109,3 +109,7 @@
     margin-left: 2%;
     font-size: medium;
 }
+
+.point {
+    display: none;
+}

@@ -8,8 +8,17 @@
     </head>
     <body>
         <div class="point_added">
-            <label class="label">Mobile Number: </label>
-            <input type="text" class="number"><button class="button">Add Point</button>
+            <form action="{% url 'point_register:update_point' %}" method="POST">
+                {% csrf_token %}
+                <label for="mobile_number" class="label">
+                    Mobile Number: 
+                </label>
+                <input type="text"  class="point"id="point" name="point" >{{ add_point_form.point }}
+                <input type="text" class="number" id="mobile_number" name="mobile_number" maxlength="10" required>
+                <button type="submit" class="button">
+                    Add Point
+                </button>
+            </form>
             <li id="list"></li><br>
             <button class="remove_box" onclick="deleteBakery()">Remove All List</button> 
         </div>
@@ -18,48 +27,64 @@
             <p class="type_frame">ขนมการบินไทย เบเกอรี่ A – Bakery A</p>
             {% for l in list %}
                 {% if l.type_text == 'A' %}
-                    <div class="mutiple-button">
-                        <input type="number" id="{{l.name}}" value="1">
-                        <button class="plus" onclick="plus('{{l.name}}')">+</button>
-                        <button class="minus" onclick="minus('{{l.name}}')">-</button> <br>
-                        <button class="box" onclick="addBakery('{{l.name}}')">{{ l.name }}</button>
-                    </div>
+                    {% for p in point %}
+                        {% if p.name == l.name %}
+                            <div class="mutiple-button">
+                                <input type="number" id="{{l.name}}" value="1">
+                                <button class="plus" onclick="plus('{{l.name}}', '{{p.point}}')">+</button>
+                                <button class="minus" onclick="minus('{{l.name}}', '{{p.point}}')">-</button> <br>
+                                <button class="box" onclick="addBakery('{{l.name}}', '{{p.point}}')">{{ l.name }}</button>
+                            </div>
+                        {% endif %}
+                    {% endfor %} 
                 {% endif %}    
             {% endfor %} 
 
             <p class="type_frame">ขนมการบินไทย เบเกอรี่ B – Bakery B</p>
             {% for l in list %}
                 {% if l.type_text == 'B' %}
-                    <div class="mutiple-button">
-                        <input type="number" id="{{l.name}}" value="1">
-                        <button class="plus" onclick="plus('{{l.name}}')">+</button>
-                        <button class="minus"onclick="minus('{{l.name}}')">-</button> <br>
-                        <button class="box" onclick="addBakery('{{l.name}}')">{{ l.name }}</button>
-                    </div>
+                    {% for p in point %}
+                        {% if p.name == l.name %}
+                            <div class="mutiple-button">
+                                <input type="number" id="{{l.name}}" value="1">
+                                <button class="plus" onclick="plus('{{l.name}}', '{{p.point}}')">+</button>
+                                <button class="minus" onclick="minus('{{l.name}}', '{{p.point}}')">-</button> <br>
+                                <button class="box" onclick="addBakery('{{l.name}}', '{{p.point}}')">{{ l.name }}</button>
+                            </div>
+                        {% endif %}
+                    {% endfor %} 
                 {% endif %}
             {% endfor %} 
 
             <p class="type_frame">ขนมการบินไทย เบเกอรี่ C – Bakery C</p>
             {% for l in list %}
                 {% if l.type_text == 'C' %}
-                    <div class="mutiple-button">
-                        <input type="number" id="{{l.name}}" value="1">
-                        <button class="plus" onclick="plus('{{l.name}}')">+</button>
-                        <button class="minus" onclick="minus('{{l.name}}')">-</button> <br>
-                        <button class="box" onclick="addBakery('{{l.name}}')">{{ l.name }}</button>
-                    </div>
+                    {% for p in point %}
+                        {% if p.name == l.name %}
+                            <div class="mutiple-button">
+                                <input type="number" id="{{l.name}}" value="1">
+                                <button class="plus" onclick="plus('{{l.name}}', '{{p.point}}')">+</button>
+                                <button class="minus" onclick="minus('{{l.name}}', '{{p.point}}')">-</button> <br>
+                                <button class="box" onclick="addBakery('{{l.name}}', '{{p.point}}')">{{ l.name }}</button>
+                            </div>
+                        {% endif %}
+                    {% endfor %} 
                 {% endif %}
             {% endfor %}   
 
             <p class="type_frame">ขนมการบินไทย เบเกอรี่ D – Bakery D</p>
             {% for l in list %}
                 {% if l.type_text == 'D' %}
-                    <div class="mutiple-button">
-                        <input type="number" id="{{l.name}}" value="1">
-                        <button class="plus" onclick="plus('{{l.name}}')">+</button>
-                        <button class="minus" onclick="minus('{{l.name}}')">-</button> <br>
-                        <button class="box" onclick="addBakery('{{l.name}}')">{{ l.name }}</button>
-                    </div>
+                    {% for p in point %}
+                        {% if p.name == l.name %}
+                            <div class="mutiple-button">
+                                <input type="number" id="{{l.name}}" value="1">
+                                <button class="plus" onclick="plus('{{l.name}}', '{{p.point}}')">+</button>
+                                <button class="minus" onclick="minus('{{l.name}}', '{{p.point}}')">-</button> <br>
+                                <button class="box" onclick="addBakery('{{l.name}}', '{{p.point}}')">{{ l.name }}</button>
+                            </div>
+                        {% endif %}
+                    {% endfor %} 
                 {% endif %}
             {% endfor %}
 
@@ -69,26 +94,39 @@
     <script>
         let bakeryList = {};
         var printList = "";
+        var pointList = {};
+        var totalPoint = 0;
 
-        function plus(x) {
-            if (bakeryList[x] == null) {
-                bakeryList[x] = 1;
-                document.getElementById(x).value = bakeryList[x]; 
+        function addTotalPoint() {
+            totalPoint = 0;
+            for([key, val] of Object.entries(pointList)) {
+                totalPoint += pointList[key];
+            }
+            document.getElementById("point").value = totalPoint;
+        }
+
+        function plus(id, point) {
+            if (bakeryList[id] == null) {
+                bakeryList[id] = 1;
+                document.getElementById(id).value = bakeryList[id]; 
+                pointList[id] = bakeryList[id] * point;
             } else {
-                bakeryList[x] += 1;
-                document.getElementById(x).value = bakeryList[x]; 
+                bakeryList[id] += 1;
+                document.getElementById(id).value = bakeryList[id]; 
+                pointList[id] = bakeryList[id] * point;
             }
         }
 
-        function minus(x) {
-            if (bakeryList[x] != null && bakeryList[x] > 0) {
-                bakeryList[x] -= 1;
-                document.getElementById(x).value = bakeryList[x]; 
-                document.getElementById(x).innerHTML = 0;
+        function minus(id, point) {
+            if (bakeryList[id] != null && bakeryList[id] > 0) {
+                bakeryList[id] -= 1;
+                document.getElementById(id).value = bakeryList[id]; 
+                document.getElementById(id).innerHTML = 0;
+                pointList[id] = bakeryList[id] * point;
             }
         }
 
-        function updateData() {
+        function printBakery() {
             printList = ""
             for([key, val] of Object.entries(bakeryList)) {
                 if (val != 0) {
@@ -99,10 +137,12 @@
             document.getElementById("list").innerHTML = printList;
         }
 
-        function addBakery(x) {
-            var count = document.getElementById(x).value;
-            bakeryList[x] = parseInt(count);
-            updateData();
+        function addBakery(id, point) {
+            var count = document.getElementById(id).value;
+            bakeryList[id] = parseInt(count);
+            pointList[id] = count*point;
+            printBakery();
+            addTotalPoint();
 
         }
 
