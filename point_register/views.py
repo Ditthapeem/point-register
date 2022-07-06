@@ -25,7 +25,6 @@ def add_point(request):
     form = AddPointForm()
     if request.method == "POST":
         form = AddPointForm(request.POST)
-        print(form)
         if form.is_valid():
             user_id = form.cleaned_data['mobile_number']
             user_point = form.cleaned_data['point']
@@ -33,7 +32,10 @@ def add_point(request):
             old_point = UserPoint.objects.get(name=user_instance)
             new_point = int(old_point.point) + int(user_point) 
             user_point = UserPoint.objects.filter(name=user_instance).update(point=new_point) 
-            return render(request,'point_register/result.html')    
+            user_and_point = UserPoint.objects.get(name=user_instance)
+            context = { "user_and_point": user_and_point }
+            print(context)
+            return render(request,'point_register/result.html', context)    
     context = {'form':form }
     return render(request,'point_register/bakery_detail.html', context)
 
