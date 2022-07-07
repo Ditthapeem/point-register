@@ -1,0 +1,18 @@
+.button {
+    background-color: #5a01a7; 
+    height: 25%;
+    display: block;
+    color: white;
+    text-decoration: none;
+    font-size: x-large;
+    cursor: pointer;
+    padding: 10px;
+
+}
+
+.button:hover {
+    outline-color: transparent;
+    outline-style:solid;
+    box-shadow: 0 0 0 4px #5a01a7;
+    background-color: rgb(216, 174, 255);
+}
