@@ -1,9 +1,8 @@
-from multiprocessing import context
-from unicodedata import name
 from django.shortcuts import render
 from .form import CreateUserForm
 from .add_point_form import AddPointForm
 from django.contrib.auth.models import User
+from django.contrib import messages
 
 from .models import Bakery, Type, Point, UserPoint
 
@@ -48,5 +47,8 @@ def register(request):
             u = UserPoint(name=user, point=0)
             u.save()
             return render(request, 'point_register/index.html')
+        else:
+            messages.error(request, 'Invalid form submission.')
+            messages.error(request, form.errors)
     context = {'form':form }
     return render(request,'point_register/register.html', context)
