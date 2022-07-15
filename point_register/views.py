@@ -1,8 +1,14 @@
+from csv import writer
 from django.shortcuts import render
 from .form import CreateUserForm
 from .add_point_form import AddPointForm
 from django.contrib.auth.models import User
 from django.contrib import messages
+from django.core import serializers
+from django.http import HttpResponse
+import csv
+from django.contrib import admin
+
 
 from .models import Bakery, Type, Point, UserPoint
 
@@ -52,3 +58,22 @@ def register(request):
             messages.error(request, form.errors)
     context = {'form':form }
     return render(request,'point_register/register.html', context)
+
+def export_selected_objects(modeladmin, request, queryset):
+    response = HttpResponse(
+        content_type='text/csv',
+        headers={'Content-Disposition': 'attachment; filename="somefilename.csv"'},
+    )
+    writer = csv.writer(response)
+    field = [field.name for field in queryset[0]._meta.get_fields()]
+    writer.writerow(field)
+    for i in queryset:
+        element = []
+        for j in field:
+            element.append(get_object(i, j))
+        writer.writerow(element)
+    return response
+
+def get_object(someobject, string):
+    return getattr(someobject,string)
+        
