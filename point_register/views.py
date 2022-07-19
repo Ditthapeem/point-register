@@ -66,11 +66,16 @@ def export_selected_objects(modeladmin, request, queryset):
     )
     writer = csv.writer(response)
     field = [field.name for field in queryset[0]._meta.get_fields()]
+    print(field)
     writer.writerow(field)
     for i in queryset:
         element = []
         for j in field:
-            element.append(get_object(i, j))
+            try:
+                element.append(get_object(i, j))
+            except:
+                element.append("#N/A")
+                pass
         writer.writerow(element)
     return response
 

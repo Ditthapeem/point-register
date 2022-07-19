@@ -23,6 +23,11 @@
             <button class="remove_box" onclick="deleteBakery()">Remove All List</button> 
         </div>
         <div class="point_block">
+            <p class="type_frame">Enter amount of money</p>
+                <div class="mutiple-button">
+                    <input type="number" id="money" value="0">
+                    <button class="plus" onclick="addMoney('{{money}}')">Add money</button>
+                </div>
 
             <p class="type_frame">ขนมการบินไทย เบเกอรี่ A – Bakery A</p>
             {% for l in list %}
@@ -153,6 +158,13 @@
             printList = "";
             bakeryList = {};
             document.getElementById("list").innerHTML = printList;
+        }
+
+        function addMoney(id) {
+            var rawQuotient = document.getElementById(id).value/100
+            var remainder = rawQuotient % 1;
+            var quotient = rawQuotient - remainder;
+            totalPoint = quotient
         }
 
     </script>
