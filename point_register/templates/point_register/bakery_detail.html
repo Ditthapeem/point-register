@@ -26,7 +26,7 @@
             <p class="type_frame">Enter amount of money</p>
                 <div class="mutiple-button">
                     <input type="number" id="money" value="0">
-                    <button class="plus" onclick="addMoney('{{money}}')">Add money</button>
+                    <button class="plus" onclick="addMoney()">Add money</button>
                 </div>
 
             <p class="type_frame">ขนมการบินไทย เบเกอรี่ A – Bakery A</p>
@@ -103,10 +103,11 @@
         var totalPoint = 0;
 
         function addTotalPoint() {
-            totalPoint = 0;
+            point = 0;
             for([key, val] of Object.entries(pointList)) {
-                totalPoint += pointList[key];
+                point += pointList[key];
             }
+            totalPoint += point
             document.getElementById("point").value = totalPoint;
         }
 
@@ -157,14 +158,22 @@
             }
             printList = "";
             bakeryList = {};
+            pointList = {};
             document.getElementById("list").innerHTML = printList;
         }
 
-        function addMoney(id) {
-            var rawQuotient = document.getElementById(id).value/100
+        function printMoney() {
+            printList += "<li class='display_text'>" + " - Total point " + " = " + totalPoint + "</li>" 
+            document.getElementById("list").innerHTML = printList;
+        }
+
+        function addMoney() {
+            var rawQuotient = document.getElementById('money').value/100
             var remainder = rawQuotient % 1;
             var quotient = rawQuotient - remainder;
             totalPoint = quotient
+            printMoney()
+            addTotalPoint()
         }
 
     </script>
