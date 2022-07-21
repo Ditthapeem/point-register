@@ -8,5 +8,7 @@ urlpatterns = [
     path('bakery/', views.bakery_detail, name='bakery'),
     path('setbox/', views.setbox_detail, name='setbox'),
     path('register/', views.register, name="register"),
-    path('update_point/', views.add_point, name="update_point")
+    path('update_point/', views.add_point, name="update_point"),
+    path('สมัครสมาชิก/', views.user_register, name="user_register"),
+    path('point/', views.user_point, name="user_point")
 ]

@@ -1,0 +1,89 @@
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'point_register/user_register.css' %}">
+<html>
+    <body>
+        <form method="POST">
+            {% csrf_token %}
+            <h2>Puff&Pie Member Registration</h2><br>
+            <div class="container">
+                {% include 'point_register/user_messages.html' %}<br>
+                <center><table>
+                    <tr>
+                        <td >
+                            <label class="number">
+                                <b>Mobile Number</b>
+                            </label><br>
+                            <div class="input-box">
+                                {{ form.username}}
+                            </div>
+                        </td>
+                    </tr>
+
+
+                    <tr>
+                        <td>
+                            <label class="number">
+                                <b>{{ form.first_name.label }}</b>
+                            </label>
+                            <div class="input-box">
+                                {{ form.first_name}}
+                            </div>
+                        </td>
+                    </tr>
+            
+                    <tr>
+                        <td>
+                            <label class="number">
+                                <b>{{ form.last_name.label }}</b>
+                            </label>
+                            <div class="input-box">
+                                {{ form.last_name}}
+                            </div>
+                        </td>
+                    </tr>
+            
+                    <tr>
+                        <td>
+                            <label class="number">
+                                <b>{{ form.email.label }}</b>
+                            </label>
+                            <div class="input-box">
+                                {{ form.email}}
+                            </div>     
+                        </td>      
+                    </tr>
+            
+                    <tr>
+                        <td>
+                            <label class="number">
+                                <b>{{ form.password1.label }}</b>
+                            </label>
+                            <div class="input-box">
+                                {{ form.password1}}
+                            </div>
+                        </td>
+                    </tr>
+            
+                    <tr>
+                        <td>
+                            <label class="number">
+                                <b>{{ form.password2.label }}</b>
+                            </label>
+                            <div class="input-box">
+                                {{ form.password2}}
+                            </div>
+                        </td>
+                    </tr>
+                </table></center>
+                <br>
+        
+        
+                <div class="button">
+                    <input type="submit" value="Register">
+                </div>
+            </div>
+        
+        </form>
+    </body>
+
+</html>
