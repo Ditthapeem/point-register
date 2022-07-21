@@ -6,19 +6,38 @@
     </head>
     <body>
         <center>
+            <fieldset>
+                <h1>Checking Point:</h1>
+                <form action="{% url 'point_register:update_point' %}" method="POST">
+                    {% csrf_token %}
+                    <label for="mobile_number" class="label">
+                        Mobile Number: 
+                    </label>
+                    <input type="text"  class="point"id="point" name="point" value="0">{{ add_point_form.point }}
+                    <input type="text" class="number" id="mobile_number" name="mobile_number" maxlength="10" required>
+                    <button type="submit" class="menu" onclick="checkPoint()">
+                        Check Point
+                    </button>
+                </form>
+            </fieldset>
             <a href="{% url 'point_register:bakery' %}" class="button">
                 <br>
                 รายการเบเกอรี่ และขนมการบินไทย <br> Bakery by Thai Catering
             </a><br>
-            <a class="button">
+            <!-- <a class="button">
                 <br>
                 เมนูชุดของว่าง ขนมกล่องการบินไทย <br> Snack Box Set
-            </a> <br>
+            </a> <br> -->
             <a href="{% url 'point_register:register' %}" class="button">
                 <br>
                 สมัครสมาชิกสะสมแต้ม <br> Registration new member
             </a>
         </center>
     </body>
+    <script>
+        function addPoint() {
+            document.getElementById("point").value = 0;
+        }
+    </script>
     
 </html>

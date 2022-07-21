@@ -44,6 +44,9 @@ def add_point(request):
     context = {'form':form }
     return render(request,'point_register/bakery_detail.html', context)
 
+def check_point(request):
+    pass
+
 def register(request):
     form = CreateUserForm()
     if request.method == "POST":
@@ -52,7 +55,7 @@ def register(request):
             user = form.save()
             u = UserPoint(name=user, point=0)
             u.save()
-            return render(request, 'point_register/index.html')
+            messages.info(request, 'Member Registration successfully!')
         else:
             messages.error(request, 'Invalid form submission.')
             messages.error(request, form.errors)
