@@ -1,0 +1,23 @@
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'point_register/user_check_point.css' %}">
+<html>
+    <body>
+        <center>
+            <h1>Checking Point:</h1>
+            <div class="container">
+                {% include 'point_register/user_messages.html' %}<br>
+                <form method="POST">
+                    {% csrf_token %}
+                    <label for="mobile_number" class="label">
+                        Mobile Number: 
+                    </label>
+                    <input type="text"  class="point"id="point" name="point" value="0">{{ add_point_form.point }}
+                    <input type="text" class="number" id="mobile_number" name="mobile_number" maxlength="10" required>
+                    <button type="submit" class="menu">
+                        Check Point
+                    </button>
+                </form>
+            </div>
+        </center>
+    </body>
+</html>

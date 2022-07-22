@@ -39,10 +39,34 @@ def add_point(request):
             user_point = UserPoint.objects.filter(name=user_instance).update(point=new_point) 
             user_and_point = UserPoint.objects.get(name=user_instance)
             context = { "user_and_point": user_and_point }
-            print(context)
             return render(request,'point_register/result.html', context)    
     context = {'form':form }
     return render(request,'point_register/bakery_detail.html', context)
+
+def user_check_point(request):
+    form = AddPointForm()
+    if request.method == "POST":
+        form = AddPointForm(request.POST)
+        if form.is_valid():
+            user_id = form.cleaned_data['mobile_number']
+            user_point = form.cleaned_data['point']
+            try:
+                user_instance = User.objects.get(username=user_id)
+            except:
+                messages.info(request, "Member Doesn't Exist!")
+                context = {'form':form }
+                return render(request,'point_register/user_check_point.html', context)
+            old_point = UserPoint.objects.get(name=user_instance)
+            new_point = int(old_point.point) + int(user_point) 
+            user_point = UserPoint.objects.filter(name=user_instance).update(point=new_point) 
+            user_and_point = UserPoint.objects.get(name=user_instance)
+            context = { "user_and_point": user_and_point }
+            return render(request,'point_register/user_check_point_result.html', context)    
+    context = {'form':form }
+    return render(request,'point_register/user_check_point.html', context)
+
+def user_result_point(request):
+    pass
 
 def user_register(request):
     form = CreateUserForm()
