@@ -8,6 +8,7 @@
         <center>
             <fieldset>
                 <h1>Checking Point:</h1>
+                {% include 'point_register/messages.html' %}
                 <form action="{% url 'point_register:update_point' %}" method="POST">
                     {% csrf_token %}
                     <label for="mobile_number" class="label">

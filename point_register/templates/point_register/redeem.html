@@ -1,0 +1,58 @@
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'point_register/redeem.css' %}">
+<html>
+    <body>
+        {% include 'point_register/messages.html' %}
+        <div class="left-half">
+            <h1>Redeem page</h1>
+            <label>Mobile number: </label><div id="id">{{user_id}}</div><br>
+            <label>Customer Points: </label>{{user_point}}<br>
+            <button class="menu"><a href="{% url 'point_register:index' %}" >Menu</a></button>
+        </div>  
+        <div class="right-half">
+            <h1>Get Discount</h1>
+            <div class="container">
+                <form action="{% url 'point_register:update_point' %}" method="POST">
+                    {% csrf_token %}
+                    <input type="text" class="number" id="mobile_number" name="mobile_number" maxlength="10">
+                    <input type="text"  class="point"id="point" name="point">
+                    {% if user_point >= 100 %}
+                        <button type="submit" onclick="tenPercent()">10%</button>
+                    {% else %}
+                        <button  disabled>10%</button>
+                    {% endif %}
+                    
+                    {% if user_point >= 200 %}
+                        <button type="submit" onclick="twentyPercent()">20%</button>
+                    {% else %}
+                        <button  disabled>20%</button>
+                    {% endif %}
+
+                    {% if user_point >= 500 %}
+                        <button type="submit" onclick="fiftyPercent()">50%</button>
+                    {% else %}
+                        <button disabled>50%</button>
+                    {% endif %}
+                </form> 
+            </div>
+        </div>    
+
+    </body>
+    <script>
+
+    function tenPercent(){
+        document.getElementById("mobile_number").value = document.getElementById("id").innerHTML
+        document.getElementById("point").value = -100
+    }
+
+    function twentyPercent(){
+        document.getElementById("mobile_number").value = document.getElementById("id").innerHTML
+        document.getElementById("point").value = -200
+    }
+
+    function fiftyPercent(){
+        document.getElementById("mobile_number").value = document.getElementById("id").innerHTML
+        document.getElementById("point").value = -500
+    }
+    </script>
+</html>

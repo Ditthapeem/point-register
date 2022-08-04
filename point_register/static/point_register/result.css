@@ -25,3 +25,12 @@ fieldset {
     width: 70%;
     margin: 10px;
 }
+
+.setPoint {
+    display: none;
+}
+
+.setNumber {
+    display: none;
+}
+

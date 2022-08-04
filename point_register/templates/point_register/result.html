@@ -8,16 +8,29 @@
     <body>
         <center><fieldset>
             <center><label>Mobile Number</label></center>
-            <center>{{ user_and_point.name }}</center>
+            <center><div id="mobile_number">{{ user_and_point.name }}</div></center>
         </fieldset></center>
         <center><fieldset>
             <center><label>Point</label></center>
-            <center>{{ user_and_point.point }}</center>
+            <center><div id="point">{{ user_and_point.point }}</div></center>
         </fieldset></center>
-        <h1>
-            <center><a href="{% url 'point_register:index' %}" class="menu">Menu</a>
-            <a href="{% url 'point_register:bakery' %}" class="menu">Bakery</a></center>
-        </h1>
-
+        <form action="{% url 'point_register:redeem'  user_and_point.point %}" method="POST">
+            {% csrf_token %}
+            <input type="text" class="setPoint" id="setPoint"  name="point">{{ add_point_form.point }}
+            <input type="text" class="setNumber" id="setNumber"  name="mobile_number" maxlength="10" required>{{ add_point_form.mobile_number}}
+            <h1>
+                <center><a href="{% url 'point_register:index' %}" class="menu">Menu</a>
+                <a href="{% url 'point_register:bakery' %}" class="menu">Bakery</a>
+                <button class="menu" type="submit" onclick="redeem()">Redeem Point</button></center>
+            </h1>
+        </form>
     </body>
+    <script>
+        function redeem() {
+            var point = document.getElementById("point").innerHTML;
+            var mobile_number = document.getElementById("mobile_number").innerHTML;
+            document.getElementById("setPoint").value = point;
+            document.getElementById("setNumber").value = mobile_number
+        }
+    </script>
 </html>

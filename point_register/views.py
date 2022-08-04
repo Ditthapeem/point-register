@@ -1,4 +1,5 @@
 from csv import writer
+from multiprocessing import context
 from django.shortcuts import render
 from .form import CreateUserForm
 from .add_point_form import AddPointForm
@@ -33,7 +34,12 @@ def add_point(request):
         if form.is_valid():
             user_id = form.cleaned_data['mobile_number']
             user_point = form.cleaned_data['point']
-            user_instance = User.objects.get(username=user_id)
+            try:
+                user_instance = User.objects.get(username=user_id)
+            except:
+                messages.info(request, "Member Doesn't Exist!")
+                context = {'form':form }
+                return render(request,'point_register/index.html', context)
             old_point = UserPoint.objects.get(name=user_instance)
             new_point = int(old_point.point) + int(user_point) 
             user_point = UserPoint.objects.filter(name=user_instance).update(point=new_point) 
@@ -124,4 +130,13 @@ def export_selected_objects(modeladmin, request, queryset):
 
 def get_object(someobject, string):
     return getattr(someobject,string)
-        
+
+def redeem(request, mobile_number):
+    print(mobile_number)
+    form = AddPointForm(request.POST)
+    if form.is_valid():
+        user_id = form.cleaned_data['mobile_number']
+        user_point = form.cleaned_data['point']
+        context = {     "user_id": user_id,
+                        "user_point": int(user_point)}
+    return render(request,'point_register/redeem.html', context)

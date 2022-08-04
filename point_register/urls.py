@@ -13,5 +13,6 @@ urlpatterns = [
     path('point/', views.user_point, name="user_point"),
     path('check point/', views.user_check_point, name="check_point"), # link for user check their point
     path('result check point', views.user_result_point, name="result_check_point"),
+    path('redeem_point/<int:mobile_number>', views.redeem, name="redeem")
     
 ]
