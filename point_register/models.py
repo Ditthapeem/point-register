@@ -16,13 +16,6 @@ class Point(models.Model):
     def __str__(self) -> str:
         return str(f'{self.name}: {self.point} points')
 
-class Type(models.Model):
-    name = models.OneToOneField(Bakery, on_delete=models.CASCADE)
-    type_text = models.CharField(max_length=200)
-
-    def __str__(self) -> str:
-        return str(f'{self.name}: Bakery {self.type_text}')
-
 class UserPoint(models.Model):
     name = models.OneToOneField(User, on_delete=models.CASCADE)
     point = models.IntegerField(default=0)

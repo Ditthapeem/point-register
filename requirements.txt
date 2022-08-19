@@ -7,4 +7,6 @@ sqlparse==0.4.2
 tzdata==2022.1
 whitenoise==6.2.0
 dj_database_url
-psycopg2
+# psycopg2==2.6
+# pg_config
+# libpq-dev==9.5

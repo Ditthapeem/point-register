@@ -29,70 +29,15 @@
                     <button class="plus" onclick="addMoney()">Add money</button>
                 </div>
 
-            <p class="type_frame">ขนมการบินไทย เบเกอรี่ A – Bakery A</p>
-            {% for l in list %}
-                {% if l.type_text == 'A' %}
-                    {% for p in point %}
-                        {% if p.name == l.name %}
-                            <div class="mutiple-button">
-                                <input type="number" id="{{l.name}}" value="1">
-                                <button class="plus" onclick="plus('{{l.name}}', '{{p.point}}')">+</button>
-                                <button class="minus" onclick="minus('{{l.name}}', '{{p.point}}')">-</button> <br>
-                                <button class="box" onclick="addBakery('{{l.name}}', '{{p.point}}')">{{ l.name }}</button>
-                            </div>
-                        {% endif %}
-                    {% endfor %} 
-                {% endif %}    
-            {% endfor %} 
-
-            <p class="type_frame">ขนมการบินไทย เบเกอรี่ B – Bakery B</p>
-            {% for l in list %}
-                {% if l.type_text == 'B' %}
-                    {% for p in point %}
-                        {% if p.name == l.name %}
-                            <div class="mutiple-button">
-                                <input type="number" id="{{l.name}}" value="1">
-                                <button class="plus" onclick="plus('{{l.name}}', '{{p.point}}')">+</button>
-                                <button class="minus" onclick="minus('{{l.name}}', '{{p.point}}')">-</button> <br>
-                                <button class="box" onclick="addBakery('{{l.name}}', '{{p.point}}')">{{ l.name }}</button>
-                            </div>
-                        {% endif %}
-                    {% endfor %} 
-                {% endif %}
-            {% endfor %} 
-
-            <p class="type_frame">ขนมการบินไทย เบเกอรี่ C – Bakery C</p>
-            {% for l in list %}
-                {% if l.type_text == 'C' %}
-                    {% for p in point %}
-                        {% if p.name == l.name %}
-                            <div class="mutiple-button">
-                                <input type="number" id="{{l.name}}" value="1">
-                                <button class="plus" onclick="plus('{{l.name}}', '{{p.point}}')">+</button>
-                                <button class="minus" onclick="minus('{{l.name}}', '{{p.point}}')">-</button> <br>
-                                <button class="box" onclick="addBakery('{{l.name}}', '{{p.point}}')">{{ l.name }}</button>
-                            </div>
-                        {% endif %}
-                    {% endfor %} 
-                {% endif %}
-            {% endfor %}   
-
-            <p class="type_frame">ขนมการบินไทย เบเกอรี่ D – Bakery D</p>
-            {% for l in list %}
-                {% if l.type_text == 'D' %}
-                    {% for p in point %}
-                        {% if p.name == l.name %}
-                            <div class="mutiple-button">
-                                <input type="number" id="{{l.name}}" value="1">
-                                <button class="plus" onclick="plus('{{l.name}}', '{{p.point}}')">+</button>
-                                <button class="minus" onclick="minus('{{l.name}}', '{{p.point}}')">-</button> <br>
-                                <button class="box" onclick="addBakery('{{l.name}}', '{{p.point}}')">{{ l.name }}</button>
-                            </div>
-                        {% endif %}
-                    {% endfor %} 
-                {% endif %}
-            {% endfor %}
-
+            <p class="type_frame">Bakery List</p>
+                {% for p in point %}
+                    <div class="mutiple-button">
+                        <input type="number" id="{{l.name}}" value="1">
+                        <button class="plus" onclick="plus('{{l.name}}', '{{p.point}}')">+</button>
+                        <button class="minus" onclick="minus('{{l.name}}', '{{p.point}}')">-</button> <br>
+                        <button class="box" onclick="addBakery('{{l.name}}', '{{p.point}}')">{{ p.name }}</button>
+                    </div>
+                {% endfor %} 
         </div>
     </body>  
 

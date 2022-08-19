@@ -11,17 +11,15 @@ import csv
 from django.contrib import admin
 
 
-from .models import Bakery, Type, Point, UserPoint
+from .models import Bakery, Point, UserPoint
 
 
 def index(request):
     return render(request, 'point_register/index.html')
 
 def bakery_detail(request):
-    type_list = Type.objects.all()
     point_list = Point.objects.all()
-    context = { 'list': type_list,
-                'point': point_list}
+    context = {'point': point_list}
     return render(request, 'point_register/bakery_detail.html', context)
 
 def setbox_detail(request):
